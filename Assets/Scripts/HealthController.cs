@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+	private static HealthController _instance;
+	public static HealthController Instance { get { return _instance; } }
+
+	private void Awake()
+	{
+		if (_instance != null && _instance != this)
+			Destroy(this);
+		else
+			_instance = this;
+	}
+
 	[SerializeField] private GameObject UIHealthContainer;
 	[SerializeField] private GameObject[] healthPointsSlots = new GameObject[10];
 	[SerializeField] private int startHealth = 3;
-	[SerializeField] private float healthPointDistance = 20f;
+	[SerializeField] private float healthPointDistance = 40f;
 
-	public static int CurrentHealth;
+	public int CurrentHealth;
 
 
 	private void Start()
@@ -62,5 +73,20 @@ public class HealthController : MonoBehaviour
 	public void SetActiveHealthPoints(int index, bool active)
 	{
 		healthPointsSlots[index].SetActive(active);
+	}
+
+	/// <summary>
+	/// Subtracts One Health Point(Heart).
+	/// </summary>
+	public void SubtractHealth()
+	{
+		for (int i = 0; i < healthPointsSlots.Length; i++)
+		{
+			if (!healthPointsSlots[i].activeSelf)
+			{
+				healthPointsSlots[i - 1].SetActive(false);
+				return;
+			}
+		}
 	}
 }
