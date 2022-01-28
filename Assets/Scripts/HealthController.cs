@@ -7,14 +7,6 @@ public class HealthController : MonoBehaviour
 	private static HealthController _instance;
 	public static HealthController Instance { get { return _instance; } }
 
-	private void Awake()
-	{
-		if (_instance != null && _instance != this)
-			Destroy(this);
-		else
-			_instance = this;
-	}
-
 	[SerializeField] private GameObject UIHealthContainer;
 	[SerializeField] private GameObject[] healthPointsSlots = new GameObject[10];
 	[SerializeField] private int startHealth = 3;
@@ -22,6 +14,14 @@ public class HealthController : MonoBehaviour
 
 	public int CurrentHealth;
 
+
+	private void Awake()
+	{
+		if (_instance != null && _instance != this)
+			Destroy(this);
+		else
+			_instance = this;
+	}
 
 	private void Start()
 	{
