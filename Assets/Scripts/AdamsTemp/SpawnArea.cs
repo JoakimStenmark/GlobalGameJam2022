@@ -14,7 +14,7 @@ public class SpawnArea : MonoBehaviour
 		_transform = transform;
 
 		Vector3 origin = _transform.position;
-		Vector3 range = _transform.localScale;
+		Vector3 range = _transform.localScale * .5f;
 		Vector3 randomRange = new Vector3(
 			Random.Range(-range.x, range.x),
 			Random.Range(-range.y, range.y),
