@@ -31,9 +31,13 @@ public class PlayerControllerTest : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.collider.TryGetComponent(out BreakBrick bb))
-        {
-            bb.CompairBody(bodyType, hit.point);
+        if (!character.isGrounded)
+        {           
+            if (hit.collider.TryGetComponent(out BreakBrick bb))
+            {
+                bb.CompairBody(bodyType, hit.point);
+            }
+
         }
     }
 
