@@ -16,7 +16,7 @@ GameObject:
   m_Layer: 0
   m_Name: BreakeblePlatform
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbb1474c686cd745925391407d6c37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myType: {fileID: 0}
   damageOnImpact: 2
   collider: {fileID: 4949850445551085310}
   vfx: {fileID: 3569743714511140709}
