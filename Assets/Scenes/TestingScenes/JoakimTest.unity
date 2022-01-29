@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 2089275635}
-  heightOffset: 30
+  heightOffset: 10
 --- !u!1 &1668062788
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +550,8 @@ GameObject:
   - component: {fileID: 1668062791}
   - component: {fileID: 1668062790}
   - component: {fileID: 1668062789}
+  - component: {fileID: 1668062794}
+  - component: {fileID: 1668062793}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -627,12 +629,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668062788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 165.4, z: 0}
+  m_LocalPosition: {x: 0, y: 467.48, z: 0}
   m_LocalScale: {x: 50, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1668062793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668062788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbb1474c686cd745925391407d6c37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageOnImpact: 2
+--- !u!114 &1668062794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668062788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77fa038c3a00644dadb157de586f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCharacter: 0
+  hard: 0
+  soft: 0
 --- !u!1 &2055417553
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +772,7 @@ GameObject:
   - component: {fileID: 2089275632}
   - component: {fileID: 2089275631}
   - component: {fileID: 2089275636}
+  - component: {fileID: 2089275637}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -761,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c96ad20f2b4766489b05fbec3a4f2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 2
+  power: 1
   drag: 0.9
   maxDeltaLength: 2
   gravity: {x: 0, y: -1, z: 0}
@@ -859,3 +890,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2089275637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089275630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77fa038c3a00644dadb157de586f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCharacter: 1
+  hard: 0
+  soft: 0
