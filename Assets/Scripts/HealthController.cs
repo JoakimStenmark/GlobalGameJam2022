@@ -90,11 +90,11 @@ public class HealthController : MonoBehaviour
 	/// </summary>
 	public void SubtractHealth()
 	{
-		for (int i = 0; i < healthPointsSlots.Length; i++)
+		for (int i = healthPointsSlots.Length-1; i > 0; i--)
 		{
-			if (!healthPointsSlots[i].activeSelf)
+			if (healthPointsSlots[i].activeSelf)
 			{
-				healthPointsSlots[i - 1].SetActive(false);
+				healthPointsSlots[i].SetActive(false);
 				return;
 			}
 		}
