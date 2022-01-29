@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class BreakBrick : MonoBehaviour
 {
-    BodyType myType;
+    [SerializeField] BodyType myType;
     [SerializeField] int damageOnImpact = 2;
     [SerializeField] public BoxCollider collider;
 
@@ -28,8 +28,8 @@ public class BreakBrick : MonoBehaviour
 
         vfx.Init(this);
 
-        if(selfDestuct)
-        Destroy(gameObject, selfDestuctTime);
+        if (selfDestuct)
+            Destroy(gameObject, selfDestuctTime);
     }
 
     public void ResetPlatform()
@@ -48,25 +48,20 @@ public class BreakBrick : MonoBehaviour
         }
     }
 
-    private void CompairBody(BodyType compairedType, Vector3 point)
+    public void CompairBody(BodyType compairedType, Vector3 point)
     {
-
-        if (myType.hard)
+        if (compairedType.hard)
         {
-            Debug.Log("MyType = hard");
-            if (compairedType.hard)
-            {
-                Debug.Log("colBody = hard");
-                 
-                DestroyMe(point);
-                return;
-            }
-            if (!compairedType.hard)
-            {
-                Debug.Log("colBody = soft");
-                if (compairedType.mainCharacter)
-                    GiveDamage(damageOnImpact);
-            }
+            Debug.Log("colBody = hard");
+
+            DestroyMe(point);
+            return;
+        }
+        if (!compairedType.hard)
+        {
+            Debug.Log("colBody = soft");
+            if (compairedType.mainCharacter)
+                GiveDamage(damageOnImpact);
         }
     }
 
@@ -79,8 +74,10 @@ public class BreakBrick : MonoBehaviour
 
     private void GiveDamage(int dmg)
     {
+        Debug.Log("Give Damage");
         for (int i = 0; i < dmg; i++)
         {
+            Debug.Log("Dmg");
             HealthController.Instance.SubtractHealth();
         }
     }

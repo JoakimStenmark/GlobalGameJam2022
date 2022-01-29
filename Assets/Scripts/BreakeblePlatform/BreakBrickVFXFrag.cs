@@ -14,10 +14,6 @@ public class BreakBrickVFXFrag : MonoBehaviour
     public void Init(BreakBrick parent)
     {
         this.parent = parent;
-        ResetPlatform();
-
-
-
 
         frags = new List<BoomShard>();
         size = parent.collider.size;

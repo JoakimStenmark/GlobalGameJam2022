@@ -29,9 +29,16 @@ public class PlayerControllerTest : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.TryGetComponent(out BreakBrick bb))
+        {
+            bb.CompairBody(bodyType, hit.point);
+        }
+    }
+
     void Update()
     {
-        
         if (Input.GetMouseButtonDown(0))
         {
             ToggleHardness();
