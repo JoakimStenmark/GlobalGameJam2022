@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+
+
+/// <summary>
+/// Change size by set boxcollider size and position
+/// Note Selfdestruct
+/// </summary>
 public class BreakBrick : MonoBehaviour
 {
     BodyType myType;
