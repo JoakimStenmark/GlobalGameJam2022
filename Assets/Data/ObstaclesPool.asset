@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b8e3c00d479b84ab36d1de8c73b9a2, type: 3}
   m_Name: ObstaclesPool
   m_EditorClassIdentifier: 
+  poolPrefabs:
+  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
+  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
+  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
+  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
+  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
+  containerName: ObstaclesPoolContainer
   poolObjects:
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

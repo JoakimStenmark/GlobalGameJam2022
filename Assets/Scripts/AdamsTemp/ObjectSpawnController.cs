@@ -7,12 +7,7 @@ public class ObjectSpawnController : MonoBehaviour
 	private static ObjectSpawnController _instance;
 	public static ObjectSpawnController Instance { get { return _instance; } }
 
-	[SerializeField] private ObjectPoolAsset collectibles;
-	[SerializeField] private ObjectPoolAsset obstacles;
-	[SerializeField] private Transform collectiblesPoolContainer;
-	[SerializeField] private Transform obstaclesPoolContainer;
-	[SerializeField] private GameObject[] collectiblesPool;
-	[SerializeField] private GameObject[] obstaclesPool;
+	[SerializeField] private ObjectPoolAsset[] pools;
 	[SerializeField] private SpawnArea spawnArea;
 	[Header("Spawn Settings")]
 	[SerializeField] private float minDelay;
@@ -33,27 +28,26 @@ public class ObjectSpawnController : MonoBehaviour
 		Initialize();
 	}
 
-	//private void Update()
-	//{
-	//	Spawner();
-	//}
-
 	private void Initialize()
 	{
-		collectiblesPool = new GameObject[collectibles.PoolObjects.Length];
-		obstaclesPool = new GameObject[obstacles.PoolObjects.Length];
-
-		InitializePool(collectibles, collectiblesPoolContainer, collectiblesPool);
-		InitializePool(obstacles, obstaclesPoolContainer, obstaclesPool);
+		for (int i = 0; i < pools.Length; i++)
+		{
+			pools[i].Objects = new GameObject[pools[i].Prefabs.Length];
+			//pools[i].ContainerName = pools[i].Container.gameObject.name;
+			pools[i].Container = GameObject.Find(pools[i].ContainerName).transform;
+			InitializePool(pools[i]);
+		}
+		
 		StartSpawnerRoutine();
 	}
 
-	private void InitializePool(ObjectPoolAsset prefabPool, Transform parent, GameObject[] pool)
+	private void InitializePool(ObjectPoolAsset pool)
 	{
-		for (int i = 0; i < prefabPool.PoolObjects.Length; i++)
+		pool.Objects = new GameObject[pool.Prefabs.Length];
+		for (int i = 0; i < pool.Prefabs.Length; i++)
 		{
-			var obj = Instantiate(prefabPool.PoolObjects[i], parent);
-			pool[i] = obj;
+			GameObject obj = Instantiate(pool.Prefabs[i], pool.Container);
+			pool.Objects[i] = obj;
 			obj.SetActive(false);
 		}
 	}
@@ -73,8 +67,8 @@ public class ObjectSpawnController : MonoBehaviour
 	{
 		if (!doSpawn) return;
 
-		Transform[] availablePools = { collectiblesPoolContainer, obstaclesPoolContainer };
-		GameObject[] pool = Random.Range(0, availablePools.Length) == 0 ? collectiblesPool : obstaclesPool;
+		int availablePoolsCount = pools.Length;
+		GameObject[] pool = pools[Random.Range(0, availablePoolsCount)].Objects;
 
 		List<GameObject> inactiveObjects = new List<GameObject>();
 		foreach (GameObject item in pool)
@@ -110,5 +104,12 @@ public class ObjectSpawnController : MonoBehaviour
 	private void OnDestroy()
 	{
 		StopAllCoroutines();
+		foreach (var item in pools)
+		{
+			for (int i = 0; i < item.Objects.Length; i++)
+			{
+				item.Objects[i] = null;
+			}
+		}
 	}
 }

@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b8e3c00d479b84ab36d1de8c73b9a2, type: 3}
   m_Name: CollectiblesPool
   m_EditorClassIdentifier: 
+  poolPrefabs:
+  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
+  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
+  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
+  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
+  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
+  containerName: CollectiblesPoolContainer
   poolObjects:
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
