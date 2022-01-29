@@ -40,12 +40,12 @@ public class BreakBrick : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hit");
-        if (collision.collider.TryGetComponent<BodyType>(out BodyType collidingBodyType))
-        {
-            Debug.Log("Found bodytype");
-            CompairBody(collidingBodyType, collision.GetContact(0).point);
-        }
+        //Debug.Log("hit");
+        //if (collision.collider.TryGetComponent<BodyType>(out BodyType collidingBodyType))
+        //{
+        //    Debug.Log("Found bodytype");
+        //    CompairBody(collidingBodyType, collision.GetContact(0).point);
+        //}
     }
 
     public void CompairBody(BodyType compairedType, Vector3 point)
@@ -79,6 +79,8 @@ public class BreakBrick : MonoBehaviour
         {
             Debug.Log("Dmg");
             HealthController.Instance.SubtractHealth();
+            HealthController.Instance.UpdateCurrentHealth();
+
         }
     }
 }

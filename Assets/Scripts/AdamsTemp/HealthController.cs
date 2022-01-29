@@ -98,7 +98,7 @@ public class HealthController : MonoBehaviour
 	/// </summary>
 	public void SubtractHealth()
 	{
-		for (int i = healthPointsSlots.Length-1; i > 0; i--)
+		for (int i = healthPointsSlots.Length-1; i > -1; i--)
 		{
 			if (healthPointsSlots[i].activeSelf)
 			{
@@ -132,5 +132,10 @@ public class HealthController : MonoBehaviour
 		}
 
 		SetAmountOfActiveHealthPoints(CurrentHealth);
+
+        if (CurrentHealth == 0)
+        {
+			GameManager.Instance.GameOver();
+        }
 	}
 }

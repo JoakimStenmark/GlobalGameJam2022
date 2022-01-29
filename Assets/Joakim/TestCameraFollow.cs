@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestCameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform followTarget;
+    public Transform followTarget;
     [SerializeField] float heightOffset = 10;
 
     void Start()
