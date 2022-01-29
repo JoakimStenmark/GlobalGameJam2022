@@ -1,5 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 public class BrakeBricVFX : MonoBehaviour
 {
     [SerializeField] private BreakBrick parent;
@@ -9,7 +10,11 @@ public class BrakeBricVFX : MonoBehaviour
     private Vector3 size;
     public float holeSize = 1f;
     public Vector3 holePos = Vector3.zero;
-    
+
+    public GameObject fragmentGroup;
+
+    List<BoomShard> booms;
+
     public void Init(BreakBrick parent)
     {
         this.parent = parent;
@@ -18,16 +23,29 @@ public class BrakeBricVFX : MonoBehaviour
 
     public void ResetPlatform()
     {
+
+        booms = new List<BoomShard>();
+
         size = parent.collider.size;
 
         float segment = size.x / 2;
 
-        boxL.transform.localScale = new Vector3(segment, size.y, 1);
-        boxL.transform.position = transform.position + new Vector3(-segment * 0.5f, 0, 0);
-
-        boxR.transform.localScale = new Vector3(segment, size.y, 1);
-        boxR.transform.position = transform.position + new Vector3(segment * 0.5f, 0, 0);
+        for (int i = 0; i < size.x; i++)
+        {
+            Vector3 pos = transform.position - Vector3.right * (segment - i - 0.5f);
+            GameObject frag = Instantiate(fragmentGroup, pos, Quaternion.Euler(0, 180, 0), transform);
+            foreach (Transform t in frag.transform)
+            {
+                if (t.TryGetComponent<BoomShard>(out BoomShard boom))
+                {
+                    booms.Add(boom);
+                }
+            }
+        }
+        Debug.Log("ListLegnth" + booms.Count);
     }
+
+
 
     public void BreakAtWorlPoint(Vector3 point)
     {
@@ -71,16 +89,24 @@ public class BrakeBricVFX : MonoBehaviour
             rSize = (rCorner - rHoleSide) * 0.5f;
         }
 
-
+        MakeHole(lHoleSide, rHoleSide, point);
         float lPos = lCorner - lSize;
         float rPos = rCorner - rSize;
         Debug.DrawRay(Vector3.right * lPos, Vector3.up, Color.yellow);
         Debug.DrawRay(Vector3.right * rPos, Vector3.up, Color.yellow);
+    }
 
-        boxL.transform.position = new Vector3(lPos, transform.position.y, transform.position.z);
-        boxL.transform.localScale = new Vector3(lSize * 2, size.y, 1);
-
-        boxR.transform.position = new Vector3(rPos, transform.position.y, transform.position.z);
-        boxR.transform.localScale = new Vector3(rSize * 2, size.y, 1);
+    public void MakeHole(float leftX, float rightX, Vector3 point)
+    {
+        Debug.DrawRay(new Vector3(leftX, transform.position.y, transform.position.z), Vector3.up, Color.red, 5);
+        Debug.DrawRay(new Vector3(rightX, transform.position.y, transform.position.z), Vector3.up, Color.red, 5);
+        foreach (BoomShard boom in booms)
+        {
+            if (boom.transform.position.x > leftX && boom.transform.position.x < rightX)
+            {
+                Vector3 dir = boom.transform.position - (point + Vector3.up);
+                StartCoroutine(boom.BOOM(dir));
+            }
+        }
     }
 }

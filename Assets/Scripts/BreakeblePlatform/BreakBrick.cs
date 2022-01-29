@@ -6,7 +6,10 @@ public class BreakBrick : MonoBehaviour
     [SerializeField] int damageOnImpact = 2;
     [SerializeField] public BoxCollider collider;
 
-    [SerializeField] BrakeBricVFX vfx;
+    [SerializeField] BreakBrickVFXFrag vfx;
+
+    [SerializeField] bool selfDestuct = true;
+    [SerializeField] int selfDestuctTime = 5;
     private void Start()
     {
         myType = GetComponent<BodyType>();
@@ -15,9 +18,12 @@ public class BreakBrick : MonoBehaviour
             collider = GetComponent<BoxCollider>();
 
         if (vfx == null)
-            vfx = GetComponent<BrakeBricVFX>();
+            vfx = GetComponent<BreakBrickVFXFrag>();
 
         vfx.Init(this);
+
+        if(selfDestuct)
+        Destroy(gameObject, selfDestuctTime);
     }
 
     public void ResetPlatform()
@@ -62,7 +68,6 @@ public class BreakBrick : MonoBehaviour
     {
         vfx.BreakAtWorlPoint(point);
         collider.enabled = false;
-            // Destroy(this.gameObject);
         return;
     }
 
