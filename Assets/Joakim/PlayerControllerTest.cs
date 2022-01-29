@@ -13,6 +13,10 @@ public class PlayerControllerTest : MonoBehaviour
 
     [SerializeField] private Vector3 gravity;
 
+    float timeSinceGrounded = 0;
+
+    float gravityScale = 1f;
+
     void Start()
     {
         character = GetComponent<CharacterController>();
@@ -20,6 +24,7 @@ public class PlayerControllerTest : MonoBehaviour
 
     void Update()
     {
+        //Horisontal Movement Calc
 
         Vector3 mouseDelta = new Vector3(Input.GetAxis("Mouse X"), 0, 0);
         mouseDelta = Vector3.ClampMagnitude(mouseDelta, maxDeltaLength);
@@ -28,12 +33,26 @@ public class PlayerControllerTest : MonoBehaviour
         {
             velocity += mouseDelta * power * Time.deltaTime;
         }
-
         velocity *= drag;
 
-        character.Move(velocity + gravity);
+        //Vertical Movement Calc
+        if (character.isGrounded)
+        {
+            gravityScale = 0.1f;
+            timeSinceGrounded = 0;
+        }
+        else
+        {
+            timeSinceGrounded += Time.deltaTime;
+            gravityScale = Mathf.Clamp01(timeSinceGrounded);
+        }
+        Vector3 finalGravity = gravity * gravityScale;
 
+        //Final Movement
+        character.Move(velocity + finalGravity);
     }
+
+
 
 
 }
