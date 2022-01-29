@@ -15,7 +15,7 @@ public class TestCameraFollow : MonoBehaviour
     void LateUpdate()
     {
         Camera.main.transform.position = new Vector3(transform.position.x, followTarget.position.y + heightOffset, transform.position.z);
-        Camera.main.transform.LookAt(followTarget);
+        Camera.main.transform.LookAt(new Vector3(transform.position.x, followTarget.position.y, followTarget.position.z));
 
 
     }

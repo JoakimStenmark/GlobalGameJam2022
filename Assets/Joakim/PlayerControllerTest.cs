@@ -9,6 +9,7 @@ public class PlayerControllerTest : MonoBehaviour
     private MeshRenderer meshRenderer;
 
     private Vector3 velocity;
+    public Vector3 Velocity { get => velocity; }
     [SerializeField] float power = 2;
     [SerializeField] float drag = 0.9f;
 
@@ -18,7 +19,8 @@ public class PlayerControllerTest : MonoBehaviour
 
     float timeSinceGrounded = 0;
 
-    float gravityScale = 1f;
+    [SerializeField] float gravityScale = 1f;
+    [SerializeField] float timeToMaxGravity = 10f;
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class PlayerControllerTest : MonoBehaviour
 
     void Update()
     {
-
+        
         if (Input.GetMouseButtonDown(0))
         {
             ToggleHardness();
@@ -70,7 +72,7 @@ public class PlayerControllerTest : MonoBehaviour
         else
         {
             timeSinceGrounded += Time.deltaTime;
-            gravityScale = Mathf.Clamp01(timeSinceGrounded);
+            gravityScale = 0.1f + Mathf.InverseLerp(0, timeToMaxGravity, timeSinceGrounded);
         }
     }
 
