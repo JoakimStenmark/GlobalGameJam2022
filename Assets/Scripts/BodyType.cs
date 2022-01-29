@@ -5,5 +5,5 @@ public class BodyType : MonoBehaviour
 {
     public bool mainCharacter;
     public bool hard;
-    public bool soft;
+    public bool inviceble;
 }
