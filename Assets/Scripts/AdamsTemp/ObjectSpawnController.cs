@@ -9,10 +9,14 @@ public class ObjectSpawnController : MonoBehaviour
 
 	[SerializeField] private ObjectPoolAsset collectibles;
 	[SerializeField] private ObjectPoolAsset obstacles;
+	[SerializeField] private Transform collectiblesPoolContainer;
+	[SerializeField] private Transform obstaclesPoolContainer;
+	[SerializeField] private GameObject[] collectiblesPool;
+	[SerializeField] private GameObject[] obstaclesPool;
 	[SerializeField] private SpawnArea spawnArea;
 	[Header("Spawn Settings")]
-	[SerializeField] private float minTime;
-	[SerializeField] private float maxTime;
+	[SerializeField] private float minDelay;
+	[SerializeField] private float maxDelay;
 	[SerializeField] private bool doSpawn = false;
 
 
@@ -29,29 +33,51 @@ public class ObjectSpawnController : MonoBehaviour
 		Initialize();
 	}
 
-	private void Update()
-	{
-		Spawner();
-	}
+	//private void Update()
+	//{
+	//	Spawner();
+	//}
 
 	private void Initialize()
 	{
-		InitializePool(collectibles);
-		InitializePool(obstacles);
+		collectiblesPool = new GameObject[collectibles.PoolObjects.Length];
+		obstaclesPool = new GameObject[obstacles.PoolObjects.Length];
+
+		InitializePool(collectibles, collectiblesPoolContainer, collectiblesPool);
+		InitializePool(obstacles, obstaclesPoolContainer, obstaclesPool);
+		StartSpawnerRoutine();
 	}
 
-	private void InitializePool(ObjectPoolAsset pool)
+	private void InitializePool(ObjectPoolAsset prefabPool, Transform parent, GameObject[] pool)
 	{
-		foreach (GameObject obj in pool.PoolObjects)
+		for (int i = 0; i < prefabPool.PoolObjects.Length; i++)
 		{
+			var obj = Instantiate(prefabPool.PoolObjects[i], parent);
+			pool[i] = obj;
 			obj.SetActive(false);
 		}
 	}
 
-	public void SpawnRandomObject(ObjectPoolAsset pool)
+	private void StartSpawnerRoutine()
 	{
+		StartCoroutine(TimeBetweenSpawnLoopsRoutine(Random.Range(minDelay, maxDelay)));
+	}
+
+	private IEnumerator TimeBetweenSpawnLoopsRoutine(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		SpawnRandomObject();
+	}
+
+	public void SpawnRandomObject()
+	{
+		if (!doSpawn) return;
+
+		Transform[] availablePools = { collectiblesPoolContainer, obstaclesPoolContainer };
+		GameObject[] pool = Random.Range(0, availablePools.Length) == 0 ? collectiblesPool : obstaclesPool;
+
 		List<GameObject> inactiveObjects = new List<GameObject>();
-		foreach (GameObject item in pool.PoolObjects)
+		foreach (GameObject item in pool)
 		{
 			if (!item.activeSelf)
 			{
@@ -59,25 +85,30 @@ public class ObjectSpawnController : MonoBehaviour
 			}
 		}
 		// Check whether we actually already have all of the objects out of the pool, then something is likely to be wrong.
+		GameObject obj;
 		if (inactiveObjects.Count == 0)
 		{
 			Debug.LogWarning($"No available pool-object to spawn, all are already spawned.");
 			return;
 		}
+		else if (inactiveObjects.Count == 1)
+		{
+			obj = inactiveObjects[0];
+		}
+		else
+		{
+			obj = inactiveObjects[Random.Range(0, inactiveObjects.Count)];
+		}
 
-		GameObject obj = inactiveObjects[Random.Range(0, pool.PoolObjects.Length)];
 		
 		obj.transform.position = spawnArea.GetRandomPosition();
 		obj.SetActive(true);
-		
+
+		StartSpawnerRoutine();
 	}
 
-	private void Spawner()
+	private void OnDestroy()
 	{
-		if (!doSpawn) return;
-
-		ObjectPoolAsset[] availablePools = { collectibles, obstacles };
-		ObjectPoolAsset pool = Random.Range(0, availablePools.Length) == 0 ? collectibles : obstacles;
-		SpawnRandomObject(pool);
+		StopAllCoroutines();
 	}
 }
