@@ -53,7 +53,13 @@ public class HealthController : MonoBehaviour
 		for (int i = 0; i < healthPointsSlots.Length; i++)
 		{
 			healthPointsSlots[i] = UIHealthContainer.transform.GetChild(i).gameObject;
-			var rectTransform = healthPointsSlots[i].GetComponent<RectTransform>();
+
+			RectTransform rectTransform;
+			if (!healthPointsSlots[i].TryGetComponent<RectTransform>(out rectTransform))
+			{
+				Debug.Log("HealthPointSlot is Null.");
+				return;
+			}
 
 			if (i == 0)
 			{
@@ -63,7 +69,9 @@ public class HealthController : MonoBehaviour
 
 			if (i == healthPointsSlots.Length * .5f)
 			{
-				newPosition = healthPointsSlots[0].GetComponent<RectTransform>().position;
+				if (healthPointsSlots[i].TryGetComponent(out RectTransform rt))
+					newPosition = rt.position;
+				
 				newPosition.y -= healthPointDistance;
 			}
 			else
