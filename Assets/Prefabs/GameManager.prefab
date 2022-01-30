@@ -76,8 +76,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fcbc274f8c76ce4b8eec5e10603c024, type: 2}
   - {fileID: 11400000, guid: 102a66fb9dedd3d4b8c52cbda55f235a, type: 2}
   spawnArea: {fileID: 0}
-  minDelay: 3
-  maxDelay: 6
+  minDelay: 1
+  maxDelay: 3
   doSpawn: 1
   minBound: -4.5
   maxBound: 4.5
@@ -93,5 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c57c72c85c9cba4e9a4c23f31bde646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreTxt: {fileID: 0}
+  currentScore: 0
   gameOverScreen: {fileID: 0}
   PlayerPrefab: {fileID: 8362898451922353834, guid: 44064e963275c404391ba999122f7a91, type: 3}

@@ -12,6 +12,8 @@ public class Fruit : MonoBehaviour
     {
         if(other.TryGetComponent( out PlayerControllerTest pl))
         {
+            if (pl.bodyType.hard) 
+                return;
             GameManager.Instance.AddScore(score);
         }
         //Destroy(gameObject);
