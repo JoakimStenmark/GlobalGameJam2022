@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4949850445551085304}
   - component: {fileID: 3569743714511140709}
   - component: {fileID: 7898415833485679272}
+  - component: {fileID: -7535315900432146386}
   m_Layer: 0
   m_Name: BreakeblePlatform
   m_TagString: Untagged
@@ -65,6 +66,8 @@ MonoBehaviour:
   vfx: {fileID: 3569743714511140709}
   selfDestuct: 0
   selfDestuctTime: 5
+  DeactivateBasedOnDistanceToCamera: 1
+  distanceLimit: 25
 --- !u!114 &3569743714511140709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,3 +100,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &-7535315900432146386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949850445551085306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b801e9cb1315da46ad7312f01fc6868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeactivateBasedOnDistanceToCamera: 1
+  distanceLimit: 50

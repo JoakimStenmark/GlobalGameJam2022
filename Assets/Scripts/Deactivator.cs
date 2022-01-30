@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Deactivator : MonoBehaviour
 {
-    public float distanceLimit;
     public bool DeactivateBasedOnDistanceToCamera = true;
+    public float distanceLimit = 50;
 
     private void Update()
     {
