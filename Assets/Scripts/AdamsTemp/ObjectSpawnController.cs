@@ -14,7 +14,8 @@ public class ObjectSpawnController : MonoBehaviour
 	[SerializeField] private float maxDelay;
 	[SerializeField] private bool doSpawn = false;
 
-
+	[SerializeField] public float minBound = -13;
+	[SerializeField] public float maxBound = 13;
 	private void Awake()
 	{
 		if (_instance != null && _instance != this)

@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         if (!playerInstance && PlayerPrefab)
         {
-            playerInstance = Instantiate(PlayerPrefab).GetComponent<PlayerControllerTest>();
+            playerInstance = Instantiate(PlayerPrefab,Vector3.zero,Quaternion.identity).GetComponent<PlayerControllerTest>();
         }
 
         cameraFollow = Camera.main.gameObject.GetComponent<TestCameraFollow>();
