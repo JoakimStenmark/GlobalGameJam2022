@@ -12,7 +12,7 @@ public class Fruit : MonoBehaviour
     {
         if(other.TryGetComponent( out PlayerControllerTest pl))
         {
-            pl.AddScore(score);
+            GameManager.Instance.AddScore(score);
         }
         //Destroy(gameObject);
         gameObject.SetActive(false);

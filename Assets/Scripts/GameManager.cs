@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 	private static GameManager _instance;
 	public static GameManager Instance { get { return _instance; } }
 
-	public CanvasGroup gameOverScreen;
+    [Header("Score Settings")]
+    [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private int currentScore;
 
+    public CanvasGroup gameOverScreen;
     public GameObject PlayerPrefab;
 
     private PlayerControllerTest playerInstance;
@@ -55,4 +59,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddScore(int s)
+    {
+        currentScore += s;
+        scoreTxt.text = currentScore.ToString();
+    }
 }

@@ -244,6 +244,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e93059a7ed0a4d4cb49927a0ff1835f, type: 3}
+--- !u!114 &630744774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8314960793765638145, guid: 028f3f9f710b3d34c9cd10b68e8742e5, type: 3}
+  m_PrefabInstance: {fileID: 2404672837880422383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &835370620
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +643,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 265301271}
     - target: {fileID: 1358979307218447533, guid: a870b791413557d4898c028b3a831394, type: 3}
+      propertyPath: scoreTxt
+      value: 
+      objectReference: {fileID: 630744774}
+    - target: {fileID: 1358979307218447533, guid: a870b791413557d4898c028b3a831394, type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 510487497}
@@ -779,10 +794,6 @@ PrefabInstance:
     - target: {fileID: 2404672838160058583, guid: 028f3f9f710b3d34c9cd10b68e8742e5, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2404672838999236729, guid: 028f3f9f710b3d34c9cd10b68e8742e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 028f3f9f710b3d34c9cd10b68e8742e5, type: 3}

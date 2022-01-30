@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerControllerTest : MonoBehaviour
@@ -24,18 +25,15 @@ public class PlayerControllerTest : MonoBehaviour
     [SerializeField] Vector3 gravity;
     [SerializeField] float gravityScale = 1f;
     [SerializeField] float timeToMaxGravity = 10f;
-    float timeSinceGrounded = 0;
+    
 
     public Vector3 addVelocity = Vector2.zero;
     public int score;
     public bool allowControls = true;
 
+    float timeSinceGrounded = 0;
 
 
-    public void AddScore(int s)
-    {
-        score += s;
-    }
 
     void Start()
     {
