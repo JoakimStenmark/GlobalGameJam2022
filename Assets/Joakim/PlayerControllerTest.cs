@@ -66,6 +66,11 @@ public class PlayerControllerTest : MonoBehaviour
             ToggleHardness();
         }
 
+        if (Input.GetMouseButtonUp(0) && allowControls)
+        {
+            ToggleHardness();
+        }
+
         //Drag Air
         if (!bodyType.hard)
             velocity *= 1 - airDragOut * Time.deltaTime;
