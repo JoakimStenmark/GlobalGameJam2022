@@ -77,7 +77,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 102a66fb9dedd3d4b8c52cbda55f235a, type: 2}
   spawnArea: {fileID: 0}
   minDelay: 1
-  maxDelay: 3
+  maxDelay: 4
   doSpawn: 1
   minBound: -4.5
   maxBound: 4.5
