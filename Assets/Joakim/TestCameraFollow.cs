@@ -15,11 +15,19 @@ public class TestCameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 targetPos = transform.position;
-        targetPos.y = followTarget.position.y + heightOffset;
+        if (followTarget)
+        {
+            Vector3 targetPos = transform.position;
+            targetPos.y = followTarget.position.y + heightOffset;
 
-        float dist = (transform.position - targetPos).magnitude* moveSpeed;
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, dist * Time.deltaTime);
+            float dist = (transform.position - targetPos).magnitude* moveSpeed;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, dist * Time.deltaTime);
+
+        }
+        else
+        {
+            Debug.LogWarning("No Target for MainCamera to follow");
+        }
 
         //Camera.main.transform.position = new Vector3(transform.position.x, followTarget.position.y + heightOffset, transform.position.z);
         //Camera.main.transform.LookAt(new Vector3(transform.position.x, followTarget.position.y, followTarget.position.z));
