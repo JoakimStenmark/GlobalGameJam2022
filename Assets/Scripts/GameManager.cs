@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         if (gameOverScreen)
         {
             gameOverScreen.alpha = 0;
-            playerInstance.allowControls = true;
         }
 
         if (!playerInstance && PlayerPrefab)
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
 
         cameraFollow = Camera.main.gameObject.GetComponent<TestCameraFollow>();
         cameraFollow.followTarget = playerInstance.transform;
-
+        playerInstance.allowControls = true;
     }
 
     public void GameOver()
