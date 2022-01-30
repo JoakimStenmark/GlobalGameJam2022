@@ -18,7 +18,7 @@ public class SpawnArea : MonoBehaviour
 		Vector3 randomRange = new Vector3(
 			Random.Range(-range.x, range.x),
 			Random.Range(-range.y, range.y),
-			Random.Range(-range.z, range.z));
+			0);
 		return origin + randomRange;
 	}
 

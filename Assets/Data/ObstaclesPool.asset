@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: ObstaclesPool
   m_EditorClassIdentifier: 
   poolPrefabs:
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
-  - {fileID: 2430033639237800171, guid: 45d5691723011ce4c9d87c83c2f9ba46, type: 3}
+  - {fileID: 4949850445551085306, guid: 9acabc4627ec84d499a19cdf530232d1, type: 3}
+  - {fileID: 4949850445551085306, guid: 9acabc4627ec84d499a19cdf530232d1, type: 3}
+  - {fileID: 4949850445551085306, guid: 9acabc4627ec84d499a19cdf530232d1, type: 3}
+  - {fileID: 4949850445551085306, guid: 9acabc4627ec84d499a19cdf530232d1, type: 3}
+  - {fileID: 4949850445551085306, guid: 9acabc4627ec84d499a19cdf530232d1, type: 3}
   containerName: ObstaclesPoolContainer
   poolObjects:
   - {fileID: 0}

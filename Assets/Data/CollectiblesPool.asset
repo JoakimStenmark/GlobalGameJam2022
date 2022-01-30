@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CollectiblesPool
   m_EditorClassIdentifier: 
   poolPrefabs:
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
-  - {fileID: 2833876130675687005, guid: 11bcefc8d4d502346bf4696d45dddd8e, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
   containerName: CollectiblesPoolContainer
   poolObjects:
   - {fileID: 0}

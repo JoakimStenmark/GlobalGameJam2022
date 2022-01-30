@@ -14,7 +14,8 @@ public class Fruit : MonoBehaviour
         {
             pl.AddScore(score);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     /*
     public void Eat(PlayerControllerTest pl = null)

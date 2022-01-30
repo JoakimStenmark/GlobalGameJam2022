@@ -16,6 +16,15 @@ public class BreakBrick : MonoBehaviour
 
     [SerializeField] bool selfDestuct = true;
     [SerializeField] int selfDestuctTime = 5;
+
+    public bool DeactivateBasedOnDistanceToCamera = true;
+    public float distanceLimit = 100;
+
+    private void OnEnable()
+    {
+        ResetPlatform();
+    }
+
     private void Start()
     {
         myType = GetComponent<BodyType>();
