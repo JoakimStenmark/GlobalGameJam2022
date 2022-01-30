@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
         {
             gameOverScreen.alpha = 1;
             playerInstance.allowControls = false;
+            ObjectSpawnController.Instance.StopSpawner();
+            ObjectSpawnController.Instance.ReturnAllObjectsToPool();
         }
     }
 
