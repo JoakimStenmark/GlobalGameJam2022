@@ -115,7 +115,7 @@ public class ObjectSpawnController : MonoBehaviour
 			obs.transform.position = spawnArea.GetRandomPosition();
 			if (obs.TryGetComponent<BoxCollider>(out BoxCollider c))
             {
-				c.size = new Vector3(Random.Range(2, 8),1f , 1f);
+				c.size = new Vector3(Random.Range(4, 8),1f , 1f);
             }
         }
 		
