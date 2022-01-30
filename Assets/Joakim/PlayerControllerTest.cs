@@ -48,11 +48,13 @@ public class PlayerControllerTest : MonoBehaviour
             if (hit.collider.TryGetComponent(out BreakBrick bb))
             {
                 bb.CompairBody(bodyType, hit.point);
-            }else
+            }
+            /*else
             if (hit.collider.TryGetComponent(out Fruit mums))
             {
                 mums.Eat(this);
             }
+            */
         }
     }
 
