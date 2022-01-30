@@ -26,9 +26,12 @@ public class PlayerControllerTest : MonoBehaviour
     [SerializeField] float timeToMaxGravity = 10f;
     float timeSinceGrounded = 0;
 
-
-   public Vector3 addVelocity = Vector2.zero;
+    public Vector3 addVelocity = Vector2.zero;
     public int score;
+    public bool allowControls = true;
+
+
+
     public void AddScore(int s)
     {
         score += s;
@@ -60,11 +63,10 @@ public class PlayerControllerTest : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && allowControls)
         {
             ToggleHardness();
         }
-
 
         //Drag Air
         if (!bodyType.hard)
@@ -73,7 +75,8 @@ public class PlayerControllerTest : MonoBehaviour
             velocity *= 1 - airDragShell * Time.deltaTime;
         
         //Horisontal Movement Calc
-        velocity.x = AltAltMouseController(velocity.x, bodyType.hard);
+        if (allowControls)
+            velocity.x = AltAltMouseController(velocity.x, bodyType.hard);
 
         //Vertical Movement Calc
         SetGravityScale();

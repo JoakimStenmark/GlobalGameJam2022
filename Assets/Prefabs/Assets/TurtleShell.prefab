@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 76874672983948948}
+  - component: {fileID: 5984645347284917224}
   m_Layer: 0
   m_Name: TurtleShell
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5984645347284917224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6678045337415143019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d609ebe2c0907eb4b90e31f6d858f896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnTime: 5
 --- !u!1001 &6244261280311800902
 PrefabInstance:
   m_ObjectHideFlags: 0

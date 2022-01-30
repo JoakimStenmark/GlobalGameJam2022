@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         if (gameOverScreen)
         {
             gameOverScreen.alpha = 0;
+            playerInstance.allowControls = true;
         }
 
         if (!playerInstance && PlayerPrefab)
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (gameOverScreen)
         {
             gameOverScreen.alpha = 1;
+            playerInstance.allowControls = false;
         }
     }
 
