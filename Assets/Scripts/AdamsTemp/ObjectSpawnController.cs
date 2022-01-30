@@ -16,7 +16,10 @@ public class ObjectSpawnController : MonoBehaviour
 
 	[SerializeField] public float minBound = -13;
 	[SerializeField] public float maxBound = 13;
-	public GameObject obstaclePrefab;
+	[SerializeField] private GameObject obstaclePrefab;
+	[SerializeField] private Transform obstaclesContainer;
+
+	private bool allowSpawning = true;
 
 	private void Awake()
 	{
@@ -55,7 +58,7 @@ public class ObjectSpawnController : MonoBehaviour
 		}
 	}
 
-	private void StartSpawnerRoutine()
+	public void StartSpawnerRoutine()
 	{
 		StartCoroutine(TimeBetweenSpawnLoopsRoutine(Random.Range(minDelay, maxDelay)));
 	}
@@ -71,10 +74,11 @@ public class ObjectSpawnController : MonoBehaviour
 		if (!doSpawn) return;
 
 		int availablePoolsCount = pools.Length;
-		int choiceOfPool = Random.Range(0, availablePoolsCount);
+		int choiceOfPool = Random.Range(0, availablePoolsCount + 1);
 
-        if (choiceOfPool != 1)
+        if (choiceOfPool != 0 && choiceOfPool != availablePoolsCount) // thus doubling the chance for platforms
         {
+			print($"choiceOfPool is: {choiceOfPool}");
 			GameObject[] pool = pools[choiceOfPool].Objects;
 
 			List<GameObject> inactiveObjects = new List<GameObject>();
@@ -107,15 +111,39 @@ public class ObjectSpawnController : MonoBehaviour
 		else
         {
 			print("platform");	
-			GameObject obs = Instantiate(obstaclePrefab);
+			GameObject obs = Instantiate(obstaclePrefab, obstaclesContainer);
 			obs.transform.position = spawnArea.GetRandomPosition();
 			if (obs.TryGetComponent<BoxCollider>(out BoxCollider c))
             {
-				c.size = new Vector3(Random.Range(2, 8),1f , 1f);
+				c.size = new Vector3(Random.Range(4, 8),1f , 1f);
             }
         }
 		
-		StartSpawnerRoutine();
+		if (allowSpawning)
+			StartSpawnerRoutine();
+	}
+
+	public void StopSpawner()
+	{
+		StopAllCoroutines();
+		allowSpawning = false;
+	}
+
+	public void ReturnAllObjectsToPool()
+	{
+		print("Removing all pooled objects, returning them to Pool");
+		foreach (var item in pools)
+		{
+			foreach (var obj in item.Objects)
+			{
+				if (obj.activeSelf)
+					obj.SetActive(false);
+			}
+		}
+		foreach (Transform obj in obstaclesContainer)
+		{
+			Destroy(obj.gameObject);
+		}
 	}
 
 	private void OnDestroy()

@@ -11,9 +11,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Score Settings")]
     [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private TextMeshProUGUI highscoreTxt;
     [SerializeField] private int currentScore;
+    [SerializeField] private int highscore;
+    [Space(10)]
 
-    public CanvasGroup gameOverScreen;
+    public GameObject gameOverScreen;
     public GameObject PlayerPrefab;
 
     private PlayerControllerTest playerInstance;
@@ -35,9 +38,10 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
 
-        if (gameOverScreen)
+        if (gameOverScreen.activeSelf)
         {
-            gameOverScreen.alpha = 0;
+            //gameOverScreen.alpha = 0;
+            gameOverScreen.SetActive(false);
         }
 
         if (!playerInstance && PlayerPrefab)
@@ -48,14 +52,27 @@ public class GameManager : MonoBehaviour
         cameraFollow = Camera.main.gameObject.GetComponent<TestCameraFollow>();
         cameraFollow.followTarget = playerInstance.transform;
         playerInstance.allowControls = true;
+
+        currentScore = 0;
     }
 
     public void GameOver()
     {
-        if (gameOverScreen)
+        if (!gameOverScreen.activeSelf)
         {
-            gameOverScreen.alpha = 1;
+            //gameOverScreen.alpha = 1;
+            gameOverScreen.SetActive(true);
             playerInstance.allowControls = false;
+            ObjectSpawnController.Instance.StopSpawner();
+            ObjectSpawnController.Instance.ReturnAllObjectsToPool();
+
+            PlayerPrefs.GetInt("Highscore", highscore);
+            if (currentScore > highscore)
+			{
+                PlayerPrefs.SetInt("Highscore", currentScore);
+                highscore = currentScore;
+			}
+            highscoreTxt.text = $"Highscore: {highscore}";
         }
     }
 
