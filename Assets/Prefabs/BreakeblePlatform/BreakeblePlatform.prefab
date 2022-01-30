@@ -66,8 +66,6 @@ MonoBehaviour:
   vfx: {fileID: 3569743714511140709}
   selfDestuct: 0
   selfDestuctTime: 5
-  DeactivateBasedOnDistanceToCamera: 1
-  distanceLimit: 25
 --- !u!114 &3569743714511140709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,5 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b801e9cb1315da46ad7312f01fc6868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeactivateBasedOnDistanceToCamera: 1
+  ActBasedOnDistanceToCamera: 1
+  DestroyOnAct: 1
   distanceLimit: 50

@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class Deactivator : MonoBehaviour
 {
-    public bool DeactivateBasedOnDistanceToCamera = true;
+    public bool ActBasedOnDistanceToCamera = true;
+    public bool DestroyOnAct = false;
     public float distanceLimit = 50;
 
     private void Update()
     {
-        if (DeactivateBasedOnDistanceToCamera)
+        if (ActBasedOnDistanceToCamera)
         {
             float currentDistance = transform.position.y - Camera.main.transform.position.y;
 
             if (currentDistance > distanceLimit)
             {
-                gameObject.SetActive(false);
+                if (DestroyOnAct)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                    gameObject.SetActive(false);
+
             }
         }
     }

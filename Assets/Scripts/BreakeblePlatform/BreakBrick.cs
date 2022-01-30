@@ -17,13 +17,8 @@ public class BreakBrick : MonoBehaviour
     [SerializeField] bool selfDestuct = true;
     [SerializeField] int selfDestuctTime = 5;
 
-    public bool DeactivateBasedOnDistanceToCamera = true;
-    public float distanceLimit = 100;
-
-    private void OnEnable()
-    {
-        ResetPlatform();
-    }
+    //public bool DeactivateBasedOnDistanceToCamera = true;
+    //public float distanceLimit = 100;
 
     private void Start()
     {
@@ -40,6 +35,16 @@ public class BreakBrick : MonoBehaviour
         if (selfDestuct)
             Destroy(gameObject, selfDestuctTime);
     }
+
+
+    //private void OnDisable()
+    //{
+    //    if (!gameObject.activeSelf)
+    //    {
+    //        print("PlatformReset");
+    //        ResetPlatform();
+    //    }
+    //}
 
     public void ResetPlatform()
     {

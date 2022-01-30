@@ -18,8 +18,38 @@ MonoBehaviour:
   - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
   - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
   - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
+  - {fileID: 7506672099994283555, guid: f40225bbf37deb940bc87261d0792e03, type: 3}
   containerName: CollectiblesPoolContainer
   poolObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

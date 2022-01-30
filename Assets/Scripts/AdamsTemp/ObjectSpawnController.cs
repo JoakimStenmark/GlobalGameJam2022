@@ -16,6 +16,8 @@ public class ObjectSpawnController : MonoBehaviour
 
 	[SerializeField] public float minBound = -13;
 	[SerializeField] public float maxBound = 13;
+	public GameObject obstaclePrefab;
+
 	private void Awake()
 	{
 		if (_instance != null && _instance != this)
@@ -69,36 +71,50 @@ public class ObjectSpawnController : MonoBehaviour
 		if (!doSpawn) return;
 
 		int availablePoolsCount = pools.Length;
-		GameObject[] pool = pools[Random.Range(0, availablePoolsCount)].Objects;
+		int choiceOfPool = Random.Range(0, availablePoolsCount);
 
-		List<GameObject> inactiveObjects = new List<GameObject>();
-		foreach (GameObject item in pool)
-		{
-			if (!item.activeSelf)
+        if (choiceOfPool != 1)
+        {
+			GameObject[] pool = pools[choiceOfPool].Objects;
+
+			List<GameObject> inactiveObjects = new List<GameObject>();
+			foreach (GameObject item in pool)
 			{
-				inactiveObjects.Add(item);
+				if (!item.activeSelf)
+				{
+					inactiveObjects.Add(item);
+				}
 			}
-		}
-		// Check whether we actually already have all of the objects out of the pool, then something is likely to be wrong.
-		GameObject obj;
-		if (inactiveObjects.Count == 0)
-		{
-			Debug.LogWarning($"No available pool-object to spawn, all are already spawned.");
-			return;
-		}
-		else if (inactiveObjects.Count == 1)
-		{
-			obj = inactiveObjects[0];
-		}
+			// Check whether we actually already have all of the objects out of the pool, then something is likely to be wrong.
+			GameObject obj;
+			if (inactiveObjects.Count == 0)
+			{
+				Debug.LogWarning($"No available pool-object to spawn, all are already spawned.");
+				return;
+			}
+			else if (inactiveObjects.Count == 1)
+			{
+				obj = inactiveObjects[0];
+			}
+			else
+			{
+				obj = inactiveObjects[Random.Range(0, inactiveObjects.Count)];
+			}
+
+			obj.transform.position = spawnArea.GetRandomPosition();
+			obj.SetActive(true);
+        }
 		else
-		{
-			obj = inactiveObjects[Random.Range(0, inactiveObjects.Count)];
-		}
-
+        {
+			print("platform");	
+			GameObject obs = Instantiate(obstaclePrefab);
+			obs.transform.position = spawnArea.GetRandomPosition();
+			if (obs.TryGetComponent<BoxCollider>(out BoxCollider c))
+            {
+				c.size = new Vector3(Random.Range(2, 8),1f , 1f);
+            }
+        }
 		
-		obj.transform.position = spawnArea.GetRandomPosition();
-		obj.SetActive(true);
-
 		StartSpawnerRoutine();
 	}
 

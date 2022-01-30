@@ -81,6 +81,7 @@ MonoBehaviour:
   doSpawn: 1
   minBound: -4.5
   maxBound: 4.5
+  obstaclePrefab: {fileID: 4949850445551085306, guid: 9acabc4627ec84d499a19cdf530232d1, type: 3}
 --- !u!114 &1358979307218447533
 MonoBehaviour:
   m_ObjectHideFlags: 0
