@@ -140,6 +140,10 @@ public class ObjectSpawnController : MonoBehaviour
 					obj.SetActive(false);
 			}
 		}
+		foreach (Transform obj in obstaclesContainer)
+		{
+			Destroy(obj.gameObject);
+		}
 	}
 
 	private void OnDestroy()
