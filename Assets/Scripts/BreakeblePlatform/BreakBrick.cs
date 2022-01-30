@@ -16,6 +16,15 @@ public class BreakBrick : MonoBehaviour
 
     [SerializeField] bool selfDestuct = true;
     [SerializeField] int selfDestuctTime = 5;
+
+    public bool DeactivateBasedOnDistanceToCamera = true;
+    public float distanceLimit = 100;
+
+    private void OnEnable()
+    {
+        ResetPlatform();
+    }
+
     private void Start()
     {
         myType = GetComponent<BodyType>();
@@ -62,6 +71,10 @@ public class BreakBrick : MonoBehaviour
             Debug.Log("colBody = soft");
             if (compairedType.mainCharacter)
                 GiveDamage(damageOnImpact);
+
+            if(compairedType.TryGetComponent(out PlayerControllerTest pltest)){
+                pltest.addVelocity=(Vector3.up * 40);
+            }
         }
     }
 
